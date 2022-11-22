@@ -8,8 +8,12 @@ const Button = ({text}) => {
   )
 }
 
-const Total = () => {
-
+const Total = ({text, total}) => {
+  return (
+    <div>
+      {text}: {total}
+    </div>
+  )
 }
 
 const App = () => {
@@ -25,9 +29,9 @@ const App = () => {
       <Button text='Neutral'/>
       <Button text='Bad'/>
       <Heading text='Statistics' />
-      <Total />
-      <Total />
-      <Total />
+      <Total text='Good' total={good} />
+      <Total text='Neutral' total={neutral} />
+      <Total text='Bad' total={bad} />
     </div>
   )
 }
