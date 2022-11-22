@@ -4,7 +4,7 @@ const Heading = ({text}) => <h1>{text}</h1>
 
 const Button = ({text, onClick}) => <button onClick={onClick}>{text}</button>
 
-const Total = ({text, total}) => <div>{text}: {total}</div>
+const Total = ({text, total}) => <div>{text}: {Math.round(total * 100) / 100}</div>
 
 const Avg = ({text, totals}) => {
   const avg = (totals[0] - totals[2]) / (totals[0] + totals[1] + totals[2])
@@ -39,6 +39,7 @@ const App = () => {
       <br></br>
       <Total text='All' total={good + neutral + bad} />
       <Avg text='Average' totals={[good, neutral, bad]} />
+      <Total text='Positive' total={good / (good + neutral + bad)} />
     </div>
   )
 }
