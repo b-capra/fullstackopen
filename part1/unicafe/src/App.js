@@ -6,6 +6,17 @@ const Button = ({text, onClick}) => <button onClick={onClick}>{text}</button>
 
 const Total = ({text, total}) => <div>{text}: {total}</div>
 
+const Avg = ({text, totals}) => {
+  const avg = (totals[0] - totals[2]) / (totals[0] + totals[1] + totals[2])
+  const rounded = Math.round(avg * 100) / 100
+
+  return (
+    <div>
+      {text}: {rounded}
+    </div>
+  )
+}
+
 const App = () => {
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
@@ -25,6 +36,9 @@ const App = () => {
       <Total text='Good' total={good} />
       <Total text='Neutral' total={neutral} />
       <Total text='Bad' total={bad} />
+      <br></br>
+      <Total text='All' total={good + neutral + bad} />
+      <Avg text='Average' totals={[good, neutral, bad]} />
     </div>
   )
 }
