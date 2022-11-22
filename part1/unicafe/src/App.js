@@ -17,6 +17,21 @@ const Avg = ({text, totals}) => {
   )
 }
 
+const Statistics = ({totals}) => {
+  return (
+    <div>
+      <Heading text='Statistics' />
+      <Total text='Good' total={totals[0]} />
+      <Total text='Neutral' total={totals[1]} />
+      <Total text='Bad' total={totals[2]} />
+      <br></br>
+      <Total text='All' total={totals[0] + totals[1] + totals[2]} />
+      <Avg text='Average' totals={totals} />
+      <Total text='Positive' total={totals[0] / (totals[0] + totals[1] + totals[2])} />
+    </div>
+  )
+}
+
 const App = () => {
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
@@ -32,14 +47,8 @@ const App = () => {
       <Button text='Good' onClick={addGood} />
       <Button text='Neutral' onClick={addNeutral} />
       <Button text='Bad' onClick={addBad} />
-      <Heading text='Statistics' />
-      <Total text='Good' total={good} />
-      <Total text='Neutral' total={neutral} />
-      <Total text='Bad' total={bad} />
-      <br></br>
-      <Total text='All' total={good + neutral + bad} />
-      <Avg text='Average' totals={[good, neutral, bad]} />
-      <Total text='Positive' total={good / (good + neutral + bad)} />
+
+      <Statistics totals={[good, neutral, bad]}/>
     </div>
   )
 }
