@@ -4,7 +4,9 @@ const Heading = ({text}) => <h1>{text}</h1>
 
 const Button = ({text, onClick}) => <button onClick={onClick}>{text}</button>
 
-const Total = ({text, total}) => <div>{text}: {Math.round(total * 100) / 100}</div>
+const StatNum = ({total}) => <div>{Math.round(total * 100) / 100}</div>
+
+const StatTitle = ({text}) => <div>{text}</div>;
 
 const Statistics = ({totals}) => {
   if (totals[0] + totals[1] + totals[2] === 0) return (
@@ -17,13 +19,32 @@ const Statistics = ({totals}) => {
   return (
     <div>
       <Heading text='Statistics' />
-      <Total text='Good' total={totals[0]} />
-      <Total text='Neutral' total={totals[1]} />
-      <Total text='Bad' total={totals[2]} />
-      <br></br>
-      <Total text='All' total={totals[0] + totals[1] + totals[2]} />
-      <Total text='Average' total={(totals[0] - totals[2]) / (totals[0] + totals[1] + totals[2])} />
-      <Total text='Positive' total={totals[0] / (totals[0] + totals[1] + totals[2])} />
+      <table>
+        <tr>
+          <th><StatTitle text='Good' /></th>
+          <td><StatNum total={totals[0]} /></td>
+        </tr>
+        <tr>
+          <th><StatTitle text='Neutral' /></th>
+          <td><StatNum total={totals[1]} /></td>
+        </tr>
+        <tr>
+          <th><StatTitle text='Bad' /></th>
+          <td><StatNum total={totals[2]} /></td>
+        </tr>
+        <tr>
+          <th><StatTitle text='All' /></th>
+          <td><StatNum total={totals[0] + totals[1] + totals[2]} /></td>
+        </tr>
+        <tr>
+          <th><StatTitle text='Average' /></th>
+          <td><StatNum total={(totals[0] - totals[2]) / (totals[0] + totals[1] + totals[2])} /></td>
+        </tr>
+        <tr>
+          <th><StatTitle text='Positive' /></th>
+          <td><StatNum total={totals[0] / (totals[0] + totals[1] + totals[2])} /></td>
+        </tr>
+      </table>
     </div>
   )
 }
