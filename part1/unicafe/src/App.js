@@ -20,6 +20,7 @@ const Statistics = ({totals}) => {
     <div>
       <Heading text='Statistics' />
       <table>
+      <tbody>
         <tr>
           <th><StatTitle text='Good' /></th>
           <td><StatNum num={totals[0]} /></td>
@@ -44,6 +45,7 @@ const Statistics = ({totals}) => {
           <th><StatTitle text='Positive' /></th>
           <td><StatNum num={totals[0] / (totals[0] + totals[1] + totals[2])} /></td>
         </tr>
+      </tbody>
       </table>
     </div>
   )
