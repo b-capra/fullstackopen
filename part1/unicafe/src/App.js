@@ -18,6 +18,13 @@ const Avg = ({totals}) => {
 }
 
 const Statistics = ({totals}) => {
+  if (totals[0] + totals[1] + totals[2] === 0) return (
+    <div>
+      <Heading text='Statistics' />
+      <p>No feedback given yet. Try adding some!</p>
+    </div>
+  )
+
   return (
     <div>
       <Heading text='Statistics' />
