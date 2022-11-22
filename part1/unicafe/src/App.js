@@ -6,17 +6,6 @@ const Button = ({text, onClick}) => <button onClick={onClick}>{text}</button>
 
 const Total = ({text, total}) => <div>{text}: {Math.round(total * 100) / 100}</div>
 
-const Avg = ({totals}) => {
-  const avg = (totals[0] - totals[2]) / (totals[0] + totals[1] + totals[2])
-  const rounded = Math.round(avg * 100) / 100
-
-  return (
-    <div>
-      Average: {rounded}
-    </div>
-  )
-}
-
 const Statistics = ({totals}) => {
   if (totals[0] + totals[1] + totals[2] === 0) return (
     <div>
@@ -33,7 +22,7 @@ const Statistics = ({totals}) => {
       <Total text='Bad' total={totals[2]} />
       <br></br>
       <Total text='All' total={totals[0] + totals[1] + totals[2]} />
-      <Avg totals={totals} />
+      <Total text='Average' total={(totals[0] - totals[2]) / (totals[0] + totals[1] + totals[2])} />
       <Total text='Positive' total={totals[0] / (totals[0] + totals[1] + totals[2])} />
     </div>
   )
