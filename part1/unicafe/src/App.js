@@ -8,13 +8,7 @@ const Button = ({text}) => {
   )
 }
 
-const Total = ({text, total}) => {
-  return (
-    <div>
-      {text}: {total}
-    </div>
-  )
-}
+const Total = ({text, total}) => <div>{text}: {total}</div>
 
 const App = () => {
   // save clicks of each button to its own state
