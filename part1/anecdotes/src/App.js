@@ -2,6 +2,8 @@ import { useState } from 'react'
 
 const Button = ({text, onClick}) => <button onClick={onClick}>{text}</button>
 
+const Display = ({votes}) => <p>This quote has {votes} votes.</p>
+
 const App = () => {
   const anecdotes = [
     'If it hurts, do it more often.',
@@ -14,6 +16,13 @@ const App = () => {
   ]
    
   const [selected, setSelected] = useState(0)
+  const [votes, setVotes] = useState(new Array(7).fill(0))
+
+  const updateVotes = () => {
+    let newArr = votes
+    newArr[selected] +=1
+    setVotes(newArr)
+  }
 
   const newSelection = () => {
     let random = Math.floor(Math.random() * anecdotes.length)
@@ -25,7 +34,9 @@ const App = () => {
     <div>
       {anecdotes[selected]}
       <br />
-      <Button text='New Quote' onClick={newSelection}/>
+      <Display votes={votes[selected]} />
+      <Button text='Vote' onClick={updateVotes} />
+      <Button text='New Quote' onClick={newSelection} />
     </div>
   )
 }
