@@ -4,6 +4,8 @@ const Button = ({text, onClick}) => <button onClick={onClick}>{text}</button>
 
 const Display = ({votes}) => <p>This quote has {votes} votes.</p>
 
+const Header = ({text}) => <h1>{text}</h1>
+
 const App = () => {
   const anecdotes = [
     'If it hurts, do it more often.',
@@ -32,6 +34,7 @@ const App = () => {
 
   return (
     <div>
+      <Header text='Anecdote of the day' />
       {anecdotes[selected]}
       <br />
       <Display votes={votes[selected]} />
