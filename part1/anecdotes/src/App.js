@@ -32,6 +32,8 @@ const App = () => {
     setSelected(random)
   }
 
+  const setTop = () => votes.indexOf(Math.max(...votes))
+
   return (
     <div>
       <Header text='Anecdote of the day' />
@@ -40,6 +42,8 @@ const App = () => {
       <Display votes={votes[selected]} />
       <Button text='Vote' onClick={updateVotes} />
       <Button text='New Quote' onClick={newSelection} />
+      <Header text='Anecdote w/ the most votes' />
+      {anecdotes[setTop()]}
     </div>
   )
 }
