@@ -1,3 +1,5 @@
+import Info from './Info'
+
 const CountryDisplay = ({list}) => {
   if (list.length >= 250) {
     return (
@@ -10,26 +12,17 @@ const CountryDisplay = ({list}) => {
   } else if (list.length > 1) {
     return (
       <ul>
-        {list.map(country => <li key={list.indexOf(country)}>{country.name.common}</li>)}
+        {list.map(country => 
+          <li key={list.indexOf(country)}>
+            {country.name.common}
+            <button>Show</button>
+          </li>
+        )}
       </ul>
     )
   } else if (list.length === 1) {
-    const country = list[0]
-    const languages = Object.values(country.languages)
-
-    console.log(country)
-
     return (
-      <div>
-        <h1>{country.name.common}</h1>
-        <p>Capital: {country.capital}</p>
-        <p>Population: {country.population}</p>
-        <p>Languages:</p>
-        <ul>
-          {languages.map(language => <li key={language}>{language}</li>)}
-        </ul>
-        <img src={country.flags.png} />
-      </div>
+      <Info country={list[0]} />
     )
   } else if (list.length === 0) {
     return (
