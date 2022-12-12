@@ -1,4 +1,5 @@
 import Info from './Info'
+import ListMatching from './ListMatching'
 
 const CountryDisplay = ({list}) => {
   if (list.length >= 250) {
@@ -11,14 +12,7 @@ const CountryDisplay = ({list}) => {
     )
   } else if (list.length > 1) {
     return (
-      <ul>
-        {list.map(country => 
-          <li key={list.indexOf(country)}>
-            {country.name.common}
-            <button>Show</button>
-          </li>
-        )}
-      </ul>
+      <ListMatching countries={list} />
     )
   } else if (list.length === 1) {
     return (
